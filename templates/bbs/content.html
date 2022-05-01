@@ -1,0 +1,20 @@
+{% for topic in topics %}
+
+{% if forloop.first %}
+<input id="first" type="hidden" value="{{ topic.id }}" name="first">
+{% endif %}
+
+
+<div class="border">
+    <div>{{ topic.dt }}</div>
+    <div>{{ topic.comment }}</div>
+    <form action="{% url 'bbs:single' topic.id %}">
+        <input class="btn btn-outline-danger trash" type="button" value="削除">
+    </form>
+</div>
+{% empty %}
+<input id="first" type="hidden" value="" name="first">
+
+
+{% endfor %}
+
